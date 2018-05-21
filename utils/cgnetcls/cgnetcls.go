@@ -33,7 +33,7 @@ func (s *netCls) Creategroup(cgroupname string) error {
 	_, err := os.Stat(basePath + procs)
 	if os.IsNotExist(err) {
 		if err = syscall.Mount("cgroup", basePath, "cgroup", 0, "net_cls,net_prio"); err != nil {
-			return err
+			return fmt.Errorf("Failed to mount cgroup %s got error %s", basePath, err)
 		}
 	}
 
@@ -43,7 +43,7 @@ func (s *netCls) Creategroup(cgroupname string) error {
 	}
 
 	if err = os.MkdirAll(cgroupPath, 0700); err != nil {
-		return err
+		return fmt.Errorf("Failed to create cgroup %s got error %s", cgroupPath, err)
 	}
 
 	// Write to the notify on release file and release agent files
@@ -238,7 +238,8 @@ func mountCgroupController() {
 	}
 
 	if !netCls {
-		basePath = cgroupMount + "/net_cls"
+		//basePath = cgroupMount + "/net_cls"
+		basePath = "/cgroup"
 
 		if err := os.MkdirAll(basePath, 0700); err != nil {
 			zap.L().Fatal(err.Error())

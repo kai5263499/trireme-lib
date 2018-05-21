@@ -14,7 +14,7 @@ type netCls struct {
 	TriremePath      string
 }
 
-var basePath = "/sys/fs/cgroup/net_cls"
+var basePath = "/cgroup"
 var markval uint64 = Initialmarkval
 
 // GetCgroupList geta list of all cgroup names
