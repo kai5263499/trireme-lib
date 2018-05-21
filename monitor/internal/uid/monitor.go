@@ -10,6 +10,7 @@ import (
 	"github.com/aporeto-inc/trireme-lib/monitor/registerer"
 	"github.com/aporeto-inc/trireme-lib/utils/cache"
 	"github.com/aporeto-inc/trireme-lib/utils/cgnetcls"
+
 )
 
 // UIDMonitor captures all the monitor processor information for a UIDLoginPU
@@ -62,7 +63,6 @@ func (u *UIDMonitor) SetupConfig(registerer registerer.Registerer, cfg interface
 
 	// Setup defaults
 	uidConfig = SetupDefaultConfig(uidConfig)
-
 	// Setup config
 	u.proc.netcls = cgnetcls.NewCgroupNetController(common.TriremeUIDCgroupPath, uidConfig.ReleasePath)
 	u.proc.regStart = regexp.MustCompile("^[a-zA-Z0-9_].{0,11}$")

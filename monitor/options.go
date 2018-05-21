@@ -37,6 +37,12 @@ func SubOptionMonitorLinuxExtractor(extractor extractors.EventMetadataExtractor)
 	}
 }
 
+// SubOptionMonitorLinuxReleasePath provides a way to specify a binary to excute when the cgroup has no members.
+func SubOptionMonitorLinuxReleasePath(releasePath string) LinuxMonitorOption {
+	return func(cfg *linuxmonitor.Config) {
+		cfg.ReleasePath = releasePath
+	}
+}
 // optionMonitorLinux provides a way to add a linux monitor and related configuration to be used with New().
 func optionMonitorLinux(
 	host bool,
@@ -98,6 +104,13 @@ func SubOptionMonitorUIDExtractor(extractor extractors.EventMetadataExtractor) U
 	}
 }
 
+
+// SubOptionMonitorUIDReleasePath provides a way to specify a binary to excute when the cgroup has no members.
+func SubOptionMonitorUIDReleasePath(releasePath string) UIDMonitorOption {
+	return func(cfg *uidmonitor.Config) {
+		cfg.ReleasePath = releasePath
+	}
+}
 // OptionMonitorUID provides a way to add a UID monitor and related configuration to be used with New().
 func OptionMonitorUID(
 	opts ...UIDMonitorOption,

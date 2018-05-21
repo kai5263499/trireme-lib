@@ -8,6 +8,7 @@ import (
 	"github.com/aporeto-inc/trireme-lib/common"
 	"github.com/aporeto-inc/trireme-lib/policy"
 	"github.com/aporeto-inc/trireme-lib/utils/cgnetcls"
+
 )
 
 // UIDMetadataExtractor is a metadata extractor for uid/gid.
@@ -20,6 +21,7 @@ func UIDMetadataExtractor(event *common.EventInfo) (*policy.PURuntime, error) {
 		if len(parts) != 2 {
 			return nil, fmt.Errorf("invalid tag: %s", tag)
 		}
+
 		runtimeTags.AppendKeyValue("@usr:"+parts[0], parts[1])
 	}
 

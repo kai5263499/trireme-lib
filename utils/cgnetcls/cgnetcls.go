@@ -47,7 +47,6 @@ func (s *netCls) Creategroup(cgroupname string) error {
 	}
 
 	// Write to the notify on release file and release agent files
-
 	if s.ReleaseAgentPath != "" {
 		err = ioutil.WriteFile(filepath.Join(basePath, releaseAgentConfFile), []byte(s.ReleaseAgentPath), 0644)
 		if err != nil {
