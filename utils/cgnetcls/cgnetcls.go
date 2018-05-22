@@ -146,7 +146,7 @@ func (s *netCls) DeleteCgroup(cgroupname string) error {
 		return nil
 	}
 
-	err = os.Remove(filepath.Join(basePath, s.TriremePath, cgroupname))
+	err = os.RemoveAll(filepath.Join(basePath, s.TriremePath, cgroupname))
 	if err != nil {
 		return fmt.Errorf("unable to delete cgroup %s: %s", cgroupname, err)
 	}
