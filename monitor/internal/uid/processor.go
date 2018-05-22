@@ -27,6 +27,7 @@ var ignoreNames = map[string]*struct{}{
 	"net_prio.prioidx":      nil,
 	"notify_on_release":     nil,
 	"tasks":                 nil,
+	"cgroup.event_control":  nil,
 }
 
 // uidProcessor captures all the monitor processor information for a UIDLoginPU
